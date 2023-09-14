@@ -1,0 +1,9 @@
+efi: bin/efitest.efi
+
+bin/efitest.efi: all
+	objcopy -j .text -j .sdata -j .data -j .dynamic \
+		-j .dynsym  -j .rel -j .rela -j .reloc \
+		--target=efi-app-x86_64 bin/efitest bin/efitest.efi
+
+test: bin/efitest.efi
+	qemu-system-x86_64 -bios /usr/share/ovmf/OVMF.fd -kernel bin/efitest.efi -m 128M
