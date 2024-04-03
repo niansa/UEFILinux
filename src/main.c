@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stddef.h>
+#include <string.h>
 #include <unistd.h>
 
 
@@ -21,6 +22,12 @@ int main(int argc, char **argv) {
         printf("it = %d! ", it);
     }
     printf("\n");
+
+    puts("Testing malloc()...");
+    char *mbuf = malloc(16);
+    strcpy(mbuf, "Hello");
+    puts("Testing free()...");
+    free(mbuf);
 
     puts("Testing getline() from stdin...");
     char *input_buf = NULL;

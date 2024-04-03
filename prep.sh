@@ -9,7 +9,7 @@ INCLUDE_PATHS="include  include/compat nolibc crosslibc crosslibc/STL  /usr/incl
 # Config
 ARCH="x86_64" # Warning: Also specified in Makefile_cst
 COMPILER="gcc"
-COMPILER_FLAGS="-DEFI_FUNCTION_WRAPPER -DLINUX_UEFI_USE_INTERNAL_INTS -DCLIBC_NO_MEMCPY -DCLIBC_NO_MEMSET -mno-red-zone -fno-stack-protector -fpic -fshort-wchar -Wno-builtin-declaration-mismatch"
+COMPILER_FLAGS="-DEFI_FUNCTION_WRAPPER -DLINUX_UEFI_USE_INTERNAL_INTS -DCLIBC_NO_MEMCPY -DCLIBC_NO_MEMSET -DCLIBC_NO_LL_HEAP -mno-red-zone -fno-stack-protector -fpic -fshort-wchar -Wno-builtin-declaration-mismatch"
 COMPILER_FLAGS_CXX="-fno-rtti -nostdinc++"
 ASSEMBLER="nasm"
 ASSEMBLER_FLAGS=""
