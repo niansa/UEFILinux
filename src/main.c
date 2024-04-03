@@ -39,4 +39,6 @@ int main(int argc, char **argv) {
 
     puts("Press return to exit.");
     while (getchar() != '\n');
+
+    exit(0);
 }
