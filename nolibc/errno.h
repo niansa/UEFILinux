@@ -7,14 +7,11 @@
 #ifndef _NOLIBC_ERRNO_H
 #define _NOLIBC_ERRNO_H
 
+#include <stdio.h>
 #include <asm/errno.h>
 
-#ifndef NOLIBC_IGNORE_ERRNO
 #define SET_ERRNO(v) do { errno = (v); } while (0)
 int errno __attribute__((weak));
-#else
-#define SET_ERRNO(v) do { } while (0)
-#endif
 
 
 /* errno codes all ensure that they will not conflict with a valid pointer
@@ -22,7 +19,11 @@ int errno __attribute__((weak));
  */
 #define MAX_ERRNO 4095
 
-/* make sure to include all global symbols */
-#include "nolibc.h"
+
+static __attribute__((unused))
+void perror(const char *msg)
+{
+	fprintf(stderr, "%s%serrno=%d\n", (msg && *msg) ? msg : "", (msg && *msg) ? ": " : "", errno);
+}
 
 #endif /* _NOLIBC_ERRNO_H */

@@ -11,8 +11,6 @@ static __attribute__((unused))
 ssize_t my_getdelim(char **out, size_t *out_size, int delim, int in)
 {
 	size_t out_idx = 0;
-	// Flush stdout
-	fflush(stdout);
 	// Allocate buffer if needed
 	if (*out == NULL) {
 		*out = malloc(2);

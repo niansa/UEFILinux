@@ -7,7 +7,7 @@
 #ifndef _NOLIBC_TYPES_H
 #define _NOLIBC_TYPES_H
 
-#include "std.h"
+#include <stdint.h>
 #include <linux/time.h>
 #include <linux/stat.h>
 
@@ -218,8 +218,5 @@ struct stat {
 	(TYPE *)((char *) __FIELD_PTR - offsetof(TYPE, FIELD));	\
 })
 #endif
-
-/* make sure to include all global symbols */
-#include "nolibc.h"
 
 #endif /* _NOLIBC_TYPES_H */

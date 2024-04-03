@@ -1,15 +1,15 @@
 #! /bin/bash
 
 # Paths
-SOURCE_PATHS_C="src/*.c"
-SOURCE_PATHS_CXX="src/*.cpp"
+SOURCE_PATHS_C="src/*.c crosslibc/*.c crosslibc/printf/printf.c"
+SOURCE_PATHS_CXX="src/*.cpp crosslibc/*.cpp"
 SOURCE_PATHS_ASM="src/*.s"
-INCLUDE_PATHS="include  include/compat nolibc  /usr/include/efi /usr/include/efi/x86_64 /usr/include/efi/protocol"
+INCLUDE_PATHS="include  include/compat nolibc crosslibc crosslibc/STL  /usr/include/efi /usr/include/efi/x86_64 /usr/include/efi/protocol"
 
 # Config
 ARCH="x86_64" # Warning: Also specified in Makefile_cst
 COMPILER="gcc"
-COMPILER_FLAGS="-DEFI_FUNCTION_WRAPPER -DLINUX_UEFI_USE_INTERNAL_INTS -mno-red-zone -fno-stack-protector -fpic -fshort-wchar -Wno-builtin-declaration-mismatch"
+COMPILER_FLAGS="-DEFI_FUNCTION_WRAPPER -DLINUX_UEFI_USE_INTERNAL_INTS -DCLIBC_NO_MEMCPY -DCLIBC_NO_MEMSET -mno-red-zone -fno-stack-protector -fpic -fshort-wchar -Wno-builtin-declaration-mismatch"
 COMPILER_FLAGS_CXX="-fno-rtti -nostdinc++"
 ASSEMBLER="nasm"
 ASSEMBLER_FLAGS=""
